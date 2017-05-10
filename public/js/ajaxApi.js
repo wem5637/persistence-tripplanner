@@ -1,43 +1,44 @@
-  var hotels = "hotels";
-  var restaurants = "rests";
-  var activities = "acts";
-
-  $.ajax({
-      method: 'GET',
-      url: 'http://localhost:3000/api/hotels',
-      async: false,
-      success: function(data) {
-          hotels = data;
-          console.log("hotels", hotels)
-
-      }
-
-  })
-  
-  $.ajax({
-      method: 'GET',
-      url: 'http://localhost:3000/api/restaurants',
-      async: false,
-      success: function(data) {
-          restaurants = data;
-          console.log("rests", restaurants)
-      }
-
-  })
+  var hotels = [];
+  var restaurants = [];
+  var activities = [];
 
 
-  $.ajax({
-      method: 'GET',
-      url: 'http://localhost:3000/api/activities',
-      async: false,
-      success: function(data) {
-          activities = data;
-          console.log('activities', activities)
-      }
+$.ajax({
+        method: 'GET',
+        url: 'http://localhost:3000/api/restaurants',
 
-  })
+    })
+    .then(function(data) {
+        restaurants = data;
+        // some code to run when the response comes back
+        return $.ajax({
+        method: 'GET',
+        url: 'http://localhost:3000/api/hotels',
+
+      })
+    })
+    .then(function(data) {
+        hotels = data;
+        // some code to run when the response comes back
+        return $.ajax({
+        method: 'GET',
+        url: 'http://localhost:3000/api/activities',
+
+      })
+    })
+    .then(function(data) {
+        activities = data;
+        optionsPopulator();
+        // some code to run when the response comes back
+        
+    })
+    .catch(function(errorObj) {
+        console.log("BIG ERR")
+            // some code to run if the request errors out
+    });
 
 
-  // console.log("hotels", hotels)
-  // console.log("rests", restaurants)
-  // console.log('activities', activities)
+
+
+
+

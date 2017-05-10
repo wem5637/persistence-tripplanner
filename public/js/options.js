@@ -9,7 +9,7 @@
  * then tells the trip module to add the attraction.
  */
 
-$(function(){
+function optionsPopulator(){
 
   // jQuery selects
   var $optionsPanel = $('#options-panel');
@@ -39,4 +39,4 @@ $(function(){
     tripModule.addToCurrent(attraction);
   });
 
-});
+};
