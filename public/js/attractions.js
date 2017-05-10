@@ -10,7 +10,7 @@
 var attractionsModule = (function () {
 
   // application state
-
+console.log(hotels);
   var enhanced = {
     hotels: hotels.map(attractionModule.create),
     restaurants: restaurants.map(attractionModule.create),

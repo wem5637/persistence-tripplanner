@@ -34,7 +34,7 @@ router.route('/api/hotels').get(function(req, res, next){
 
 router.route('/api/restaurants').get(function(req, res, next){
   var arr;
-  Hotel.findAll()
+  Restaurant.findAll()
   .then(function(restaurants){
     arr = restaurants;
     res.json(arr);
@@ -43,7 +43,7 @@ router.route('/api/restaurants').get(function(req, res, next){
 
 router.route('/api/activities').get(function(req, res, next){
   var arr;
-  Hotel.findAll()
+  Activity.findAll()
   .then(function(activities){
     arr = activities;
     res.json(arr);
